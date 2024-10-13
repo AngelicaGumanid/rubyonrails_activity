@@ -1,0 +1,108 @@
+<%= form_with model: @product, local: true do |form| %>
+  <% if @product.errors.any? %>
+    <ul>
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price, step: '0.01' %>
+  </div>
+
+  <div>
+    <%= form.label :available %>
+    <%= form.check_box :available %>
+  </div>
+
+  <div>
+    <%= form.label :released_at %>
+    <%= form.datetime_select :released_at %>
+  </div>
+
+  <div>
+    <%= form.label :discount %>
+    <%= form.number_field :discount, step: '0.01' %>
+  </div>
+
+  <div>
+    <%= form.label :image %>
+    <%= form.text_field :image %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
+
+
+
+
+
+
+
+
+
+<%#= form_with(model: @product, local: true) do |form| %>
+  <%# if @product.errors.any? %>
+<!--    <div id="error_explanation">-->
+<!--      <h2><%#= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>-->
+<!--      <ul>-->
+        <%# @product.errors.full_messages.each do |message| %>
+<!--          <li><%#= message %></li>-->
+        <%# end %>
+<!--      </ul>-->
+<!--    </div>-->
+  <%# end %>
+<!--  <div>-->
+    <%#= form.label :name %>
+    <%#= form.text_field :name %>
+<!--  </div>-->
+<!--  <div>-->
+    <%#= form.label :content %>
+    <%#= form.text_area :content %>
+<!--  </div>-->
+<!--  <div>-->
+    <%#= form.label :quantity %>
+    <%#= form.number_field :quantity %>
+<!--  </div>-->
+<!--  <div>-->
+    <%#= form.label :price %>
+    <%#= form.number_field :price, step: '0.01' %>
+<!--  </div>-->
+<!--  <div>-->
+    <%#= form.label :available %>
+    <%#= form.check_box :available %>
+<!--  </div>-->
+<!--  <div>-->
+    <%#= form.label :released_at %>
+    <%#= form.datetime_select :released_at %>
+<!--  </div>-->
+<!--  <div>-->
+    <%#= form.label :discount %>
+    <%#= form.number_field :discount, step: '0.01' %>
+<!--  </div>-->
+<!--  <div>-->
+    <%#= form.label :image %>
+    <%#= form.text_field :image %>
+<!--  </div>-->
+<!--  <div>-->
+    <%#= form.submit %>
+<!--  </div>-->
+<%# end %>
