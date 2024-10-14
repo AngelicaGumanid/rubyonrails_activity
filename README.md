@@ -395,6 +395,68 @@ class RemoveExpiryDate < ActiveRecord::Migration[7.0]
 end
 ```
 
+
+
+
+
+# Activity6 Validation in Rails Console
+Missing name
+```ruby=
+Product.create(name: '', content: 'Sample content', quantity: 10, price: 100.0, released_at: DateTime.now, discount: 10).valid?
+```
+Missing name with error message
+```ruby=
+product1 = Product.create(name: '', content: 'Sample content', quantity: 10, price: 100.0, released_at: DateTime.now, discount: 10)
+product1.valid?
+product1.errors.full_messages
+```
+Missing Content with error message
+```ruby=
+product2 = Product.create(name: 'Sample Product', content: '', quantity: 10, price: 100.0, released_at: DateTime.now, discount: 10)
+product2.valid?
+product2.errors.full_messages
+```
+Invalid Quantity (Negative)
+```ruby=
+product3 = Product.create(name: 'Sample Product', content: 'Sample content', quantity: -5, price: 100.0, released_at: DateTime.now, discount: 10)
+product3.valid?
+product3.errors.full_messages 
+```
+Invalid Price (Negative)
+```ruby=
+product4 = Product.create(name: 'Sample Product', content: 'Sample content', quantity: 10, price: -50.0, released_at: DateTime.now, discount: 10)
+product4.valid? 
+product4.errors.full_messages 
+```
+Missing Released At:
+```ruby=
+product5 = Product.create(name: 'Sample Product', content: 'Sample content', quantity: 10, price: 100.0, released_at: nil, discount: 10)
+product5.valid?
+product5.errors.full_messages
+```
+Invalid Discount (Greater than 100)
+```ruby=
+product6 = Product.create(name: 'Sample Product', content: 'Sample content', quantity: 10, price: 100.0, released_at: DateTime.now, discount: 150)
+product6.valid? 
+product6.errors.full_messages 
+```
+Missing Image
+```ruby=
+product8 = Product.create(name: 'Sample Product', content: 'Sample content', quantity: 10, price: 100.0, released_at: DateTime.now, discount: 10)
+product8.valid?
+product8.errors.full_messages 
+```
+Valid Creation
+```ruby=
+product9 = product7 = Product.create(name: 'Valid Product', content: 'This is valid content.', quantity: 10, price: 100.0, released_at: DateTime.now, discount: 10)
+product9.image.attach(io: File.open('./app/assets/images/JBL_Speaker.jpg'), filename: 'JBL_Speaker.jpg', content_type: 'image/jpeg')
+product9.valid?
+product9.errors.full_messages 
+```
+
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
